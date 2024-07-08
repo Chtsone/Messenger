@@ -1,2 +1,4 @@
-public class Hello {
+public class Hello
+{
+    int b;
 }
