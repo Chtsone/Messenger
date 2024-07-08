@@ -13,8 +13,7 @@ public class UserController {
 //    }
 
     @GetMapping("/")
-     public String showAuthorizationPage()
-    {
+     public String showAuthorizationPage(){
         return "authorization";
     }
 
