@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Main</title>
+    <title>Title</title>
 </head>
 <body>
-    <a href = "registration">Registration</a>
 
 </body>
 </html>

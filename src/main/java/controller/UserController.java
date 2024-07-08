@@ -7,9 +7,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
 
+//    @GetMapping("/")
+//    public String showMainPage(){
+//        return "login";
+//    }
+
     @GetMapping("/")
-    public String showMainPage(){
-        return "main";
+     public String showAuthorizationPage()
+    {
+        return "authorization";
     }
 
     @GetMapping("/registration")
@@ -21,4 +27,5 @@ public class UserController {
     public String showMenuPage(){
         return "menu";
     }
+
 }
