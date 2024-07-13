@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,16 +7,16 @@
 </head>
 <body>
 <h1>Registration form</h1>
-    <form action="menu" method="post">
-        Login <input type="text">
+    <form:form action="menu" method="post" modelAttribute = "user">
+        Login <form:input type="text" path = "login"/> <form:errors path = "login" />
         <br>
-        Password <input type="password">
+        Password <form:input type="password" path = "password"/> <form:errors path = "password" />
         <br>
-        Email <input type="email">
+        Email <form:input type="email" path = "email"/> <form:errors path = "email" />
         <br>
-        Age <input type="number">
+        Age <form:input type="number" path = "age"/> <form:errors path = "age" />
         <br>
-        <button type="submit"> Send dates </button>
-    </form>
+        <input type="submit" value = "send"/>
+    </form:form>
 </body>
 </html>
