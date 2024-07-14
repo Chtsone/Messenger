@@ -2,6 +2,8 @@ package messenger.user;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import messenger.validation.CheckEmail;
+import messenger.validation.CheckSex;
 
 @Entity
 @Table(name = "users")
@@ -18,10 +20,11 @@ public class User {
 
     @NotBlank
     @Column(name = "email")
-    //
+    @CheckEmail(value = "esp.ru", message = "Почта должна оканчиваться на esp.ru")
     private String email;
 
     @Column(name = "sex")
+    @CheckSex
     private String sex;
 
     @Column(name = "age")
