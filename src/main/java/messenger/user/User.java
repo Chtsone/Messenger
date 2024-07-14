@@ -6,6 +6,7 @@ import jakarta.validation.constraints.*;
 @Entity
 @Table(name = "users")
 public class User {
+    @Id
     @Column(name = "login")
     @NotBlank(message = "Поле не должно быть пустым")
     private String login;
@@ -15,19 +16,12 @@ public class User {
     @Size(min = 8, max = 100, message = "Пароль не должен быть короче 8 символов")
     private String password;
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
     @NotBlank
     @Column(name = "email")
-    @Pattern(regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\\\.[A-Za-z0-9-]+)*(\\\\.[A-Za-z]{2,})$"
-    , message = "enter data like this xx@xx.xx")
+    //
     private String email;
 
     @Column(name = "sex")
-    @Pattern(regexp = "(?: m | M|male | Male | f| female | Female | FEMALE | MALE ) $")
     private String sex;
 
     @Column(name = "age")
@@ -59,14 +53,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getEmail() {

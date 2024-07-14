@@ -1,7 +1,7 @@
 package messenger.controller;
 
 import jakarta.validation.Valid;
-import messenger.dao.UserDAO;
+import messenger.service.UserService;
 import messenger.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
     @Autowired
-    private UserDAO registeredUserDAO;
+    private UserService userService;
 
     @GetMapping("/")
      public String showAuthorizationPage(Model model){
@@ -32,15 +32,21 @@ public class UserController {
     @PostMapping("/menu")
     public String showMenuAfterRegistration(@Valid @ModelAttribute("user") User user, BindingResult bindingResult){
         if(bindingResult.hasErrors()){ return "registration"; }
-        else { registeredUserDAO.saveUser(user); }
+        else { userService.saveUser(user); }
         return "menu";
     }
 
     @PostMapping("/check")
-    public String showMenuAfterAuthorization(@Valid @ModelAttribute("user") User user, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){ return "authorization";}
-        if(registeredUserDAO.isExist(user)){ return "menu";}
+    public String showMenuAfterAuthorization(@ModelAttribute("user") User user){
+        if( userService.isExist(user)){ return "menu";}
         return "authorization";
     }
 
 }
+
+/*
+    1. Написать нормальную валидацию для email
+    2. Написать нормальную валидацию для sex
+    3. Залить коммит с обновами + валидацией + рабочим registration, authorization
+    4. Написать в OneNote почему я использовал service p.s чтобы в контроллере было только одно поле service, а не N - ое количество DAO
+ */

@@ -17,6 +17,8 @@
         <br>
         Age <form:input type="number" path = "age"/> <form:errors path = "age" />
         <br>
+        Sex <form:input type="text" path = "sex"/> <form:errors path = "sex" />
+        <br>
         <input type="submit" value = "send"/>
     </form:form>
 </body>
