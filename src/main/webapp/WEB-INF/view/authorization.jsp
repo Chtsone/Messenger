@@ -1,3 +1,5 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,15 +8,14 @@
 </head>
 <body>
     <h1> Authorization form </h1>
-<form action = "menu" method = "post">
-    Login <input type = "text">
+<form:form action = "check" method = "post" modelAttribute ="user">
+    Login <form:input type = "text" path = "login"/>
     </br>
-    Password <input type = "password">
+    Password <form:input type = "password" path = "password"/>
     </br>
     <button type="submit"> Send dates </button>
 
-</form>
+</form:form>
     <a href = "registration">Registration</a>
-
 </body>
 </html>
