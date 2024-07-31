@@ -17,28 +17,34 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    private String getModelAndView(Model model,String viewName)
+        {
+            model.addAttribute("user",new User());
+            return viewName;
+        }
     @GetMapping("/")
      public String showAuthorizationPage(Model model){
-        model.addAttribute("user",new User());
-        return "authorization";
+        return getModelAndView(model, "authorization");
     }
 
     @GetMapping("/registration")
     public String showRegistrationPage(Model model){
-        model.addAttribute("user",new User());
-        return "registration";
+        return getModelAndView(model, "registration");
     }
 
     @PostMapping("/menu")
     public String showMenuAfterRegistration(@Valid @ModelAttribute("user") User user, BindingResult bindingResult){
         if(bindingResult.hasErrors()){ return "registration"; }
-        else { userService.saveUser(user); }
-        return "menu";
+        else {
+            if(!userService.loginIsExist(user)){userService.saveUser(user);return "menu";}
+            else {return "registration";}
+        }
+
     }
 
     @PostMapping("/check")
     public String showMenuAfterAuthorization(@ModelAttribute("user") User user){
-        if( userService.isExist(user)){ return "menu";}
+        if(userService.loginIsExist(user) && userService.passwordIsExist(user)){ return "menu";}
         return "authorization";
     }
 
