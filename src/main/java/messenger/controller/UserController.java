@@ -36,7 +36,7 @@ public class UserController {
     public String showMenuAfterRegistration(@Valid @ModelAttribute("user") User user, BindingResult bindingResult){
         if(bindingResult.hasErrors()){ return "registration"; }
         else {
-            if(!userService.loginIsExist(user)){userService.saveUser(user);return "menu";}
+            if(!userService.loginIsExist(user)) {userService.saveUser(user); return "menu";}
             else {return "registration";}
         }
 
