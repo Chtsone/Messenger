@@ -27,9 +27,9 @@
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close">
         <property name="driverClass" value="org.postgresql.Driver" />
-        <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/messengerDB?useSSL=false" />
+        <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/messengerdb?useSSL=false" />
         <property name="user" value="postgres" />
-        <property name="password" value="Zaq1zaq1" />
+        <property name="password" value="Admin" />
     </bean>
 
     <bean id="sessionFactory"
